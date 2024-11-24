@@ -10,6 +10,9 @@ public class Algebra {
 	    System.out.println(minus(7,2));  // 7 - 2
    		System.out.println(minus(2,7));  // 2 - 7
  		System.out.println(times(3,4));  // 3 * 4
+		 System.out.println(times(3,-4));  // 3 * 4
+		 System.out.println(times(-3,4));  // 3 * 4
+		 System.out.println(times(-3,-4));  // 3 * 4
    		System.out.println(plus(2,times(4,2)));  // 2 + 4 * 2
    		System.out.println(pow(5,3));      // 5^3
    		System.out.println(pow(3,5));      // 3^5
@@ -58,11 +61,11 @@ public class Algebra {
 		int sum = 0;
 		boolean negativeNum = false;
 		if(x1 < 0) {
-			minus(0, x1);
+			x1 = minus(0, x1);
 			negativeNum = !negativeNum;
 		}
 		if(x2 < 0) {
-			minus(0, x2);
+			x2 = minus(0, x2);
 			negativeNum = !negativeNum;
 		}
 		for (int i = 0; i < x2; i++) {
@@ -80,7 +83,7 @@ public class Algebra {
 		int sum = 1;
 		boolean negativeNum = false;
 		if(x < 0) {
-			minus(0, x);
+			x = minus(0, x);
 			negativeNum = !negativeNum;
 		}
 		for (int i = 0; i < n; i++) {
@@ -96,11 +99,11 @@ public class Algebra {
 	public static int div(int x1, int x2) {
 		boolean negativeNum = false;
 		if(x1 < 0) {
-			minus(0, x1);
+			x1 = minus(0, x1);
 			negativeNum = !negativeNum;
 		}
 		if(x2 < 0) {
-			minus(0, x2);
+			x2 = minus(0, x2);
 			negativeNum = !negativeNum;
 		}
 		int sum = x1, counter = 0;
