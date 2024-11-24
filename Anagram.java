@@ -63,6 +63,9 @@ public class Anagram {
 				if((c >= 65) && (c <= 90)) {
 					preProcessString += (char)(c + 32);
 				}
+				if (c == 32) {
+				 preProcessString += c;
+				}
 			}
 			else {
 				preProcessString += c;
@@ -81,7 +84,6 @@ public class Anagram {
 			int randomNumber = (int)((Math.random()) * s1.length());
 			randomString += s1.charAt(randomNumber);
 			s1 = s1.substring(0,randomNumber) + s1.substring(randomNumber + 1);
-
 		}
 		return randomString;
 	}
