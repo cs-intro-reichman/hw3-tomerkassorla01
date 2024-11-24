@@ -56,14 +56,21 @@ public class Algebra {
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
 		int sum = 0;
+		boolean negativeNum = false;
 		if(x1 < 0) {
 			minus(0, x1);
+			negativeNum = !negativeNum;
 		}
 		if(x2 < 0) {
 			minus(0, x2);
+			negativeNum = !negativeNum;
 		}
 		for (int i = 0; i < x2; i++) {
 			sum = plus(sum, x1);
+		}
+		if (negativeNum)
+		{
+			return minus(0, sum);
 		}
 		return sum;
 	}
@@ -71,11 +78,16 @@ public class Algebra {
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
 		int sum = 1;
+		boolean negativeNum = false;
 		if(x < 0) {
 			minus(0, x);
+			negativeNum = !negativeNum;
 		}
 		for (int i = 0; i < n; i++) {
 			sum = times(sum, x);
+		}
+		if (negativeNum && mod(n, 2) != 0) {
+			return minus(0, sum);
 		}
 		return sum;
 	}
