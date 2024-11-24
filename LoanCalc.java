@@ -44,7 +44,7 @@ public class LoanCalc {
 		// Replace the following statement with your code
 		Double g = loan / n;
 		iterationCounter = 0;
-		while (endBalance(loan, rate, n, g) > 0 && g <= loan) {
+		while (endBalance(loan, rate, n, g) > 0) {
 			g += epsilon;
 			iterationCounter++;
 		}
