@@ -10,6 +10,9 @@ public class Algebra {
 	    System.out.println(minus(7,2));  // 7 - 2
    		System.out.println(minus(2,7));  // 2 - 7
  		System.out.println(times(3,4));  // 3 * 4
+		 System.out.println(times(3,-4));  // 3 * 4
+		 System.out.println(times(-3,4));  // 3 * 4
+		 System.out.println(times(-3,-4));  // 3 * 4
    		System.out.println(plus(2,times(4,2)));  // 2 + 4 * 2
    		System.out.println(pow(5,3));      // 5^3
    		System.out.println(pow(3,5));      // 3^5
@@ -25,43 +28,111 @@ public class Algebra {
 
 	// Returns x1 + x2
 	public static int plus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		if (x2 > 0) {
+			for (int i = 0; i < x2; i++) {
+				x1++;
+			}
+		}
+		else {
+			for (int i = x2; i < 0; i++) {
+				x1--;
+			}
+		}
+		return x1;
 	}
 
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		if (x2 > 0) {
+			for (int i = 0; i < x2; i++) {
+				x1--;
+			}
+		}
+		else {
+			for (int i = x2; i < 0; i++) {
+				x1++;
+			}
+		}
+		return x1;
 	}
 
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		int sum = 0;
+		boolean negativeNum = false;
+		if(x1 < 0) {
+			x1 = minus(0, x1);
+			negativeNum = !negativeNum;
+		}
+		if(x2 < 0) {
+			x2 = minus(0, x2);
+			negativeNum = !negativeNum;
+		}
+		for (int i = 0; i < x2; i++) {
+			sum = plus(sum, x1);
+		}
+		if (negativeNum)
+		{
+			return minus(0, sum);
+		}
+		return sum;
 	}
 
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
-		// Replace the following statement with your code
-		return 0;
+		int sum = 1;
+		boolean negativeNum = false;
+		if(x < 0) {
+			x = minus(0, x);
+			negativeNum = !negativeNum;
+		}
+		for (int i = 0; i < n; i++) {
+			sum = times(sum, x);
+		}
+		if (negativeNum && mod(n, 2) != 0) {
+			return minus(0, sum);
+		}
+		return sum;
 	}
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		boolean negativeNum = false;
+		if(x1 < 0) {
+			x1 = minus(0, x1);
+			negativeNum = !negativeNum;
+		}
+		if(x2 < 0) {
+			x2 = minus(0, x2);
+			negativeNum = !negativeNum;
+		}
+		int sum = x1, counter = 0;
+		while (sum >= x2) {
+			sum = minus(sum, x2);
+			counter++;
+		}
+		if (negativeNum)
+		{
+			return minus(0, counter);
+		}
+		return counter;
 	}
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		int sum = x1;
+		while (sum >= x2) {
+			sum = minus(sum, x2);
+		}
+		return sum;
 	}	
 
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
-		// Replace the following statement with your code
-		return 0;
+		int counter = 0;
+		while (times(counter, counter) <= x) {
+			counter++;
+		}
+		return minus(counter, 1);
 	}	  	  
 }
