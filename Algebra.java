@@ -71,6 +71,9 @@ public class Algebra {
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
 		int sum = 1;
+		if(x < 0) {
+			minus(0, x);
+		}
 		for (int i = 0; i < n; i++) {
 			sum = times(sum, x);
 		}
@@ -79,10 +82,23 @@ public class Algebra {
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
+		boolean negativeNum = false;
+		if(x1 < 0) {
+			minus(0, x1);
+			negativeNum = !negativeNum;
+		}
+		if(x2 < 0) {
+			minus(0, x2);
+			negativeNum = !negativeNum;
+		}
 		int sum = x1, counter = 0;
 		while (sum >= x2) {
 			sum = minus(sum, x2);
 			counter++;
+		}
+		if (negativeNum)
+		{
+			return minus(0, counter);
 		}
 		return counter;
 	}
@@ -99,9 +115,9 @@ public class Algebra {
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
 		int counter = 0;
-		while (times(counter, counter) < x) {
+		while (times(counter, counter) <= x) {
 			counter++;
 		}
-		return counter;
+		return minus(counter, 1);
 	}	  	  
 }
